@@ -46,7 +46,13 @@ class MemoriService:
             logger.info(f"Memori enabled for namespace: {self.namespace}")
 
         if self.openai_client is None:
-            self.openai_client = OpenAI(api_key=self.openai_api_key)
+            # OpenAI client without deprecated parameters
+            import openai
+            self.openai_client = openai.OpenAI(
+                api_key=self.openai_api_key,
+                timeout=30.0,
+                max_retries=2
+            )
             logger.info("OpenAI client initialized")
 
     def chat(
