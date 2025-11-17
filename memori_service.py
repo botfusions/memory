@@ -4,7 +4,7 @@ Core Memori business logic
 """
 
 from memori import Memori
-import openai
+from openai import OpenAI
 import os
 from typing import Optional, List, Dict, Any
 import logging
@@ -46,12 +46,7 @@ class MemoriService:
             logger.info(f"Memori enabled for namespace: {self.namespace}")
 
         if self.openai_client is None:
-            # OpenAI client without deprecated parameters
-            self.openai_client = openai.OpenAI(
-                api_key=self.openai_api_key,
-                timeout=30.0,
-                max_retries=2
-            )
+            self.openai_client = OpenAI(api_key=self.openai_api_key)
             logger.info("OpenAI client initialized")
 
     def chat(
