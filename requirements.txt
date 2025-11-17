@@ -3,8 +3,8 @@ uvicorn[standard]==0.31.0
 python-dotenv==1.0.1
 pydantic==2.9.2
 pydantic-settings==2.5.2
-memorisdk>=2.3.2
-openai==1.51.2
+memorisdk==2.1.0
+openai==0.28.1
 anthropic==0.39.0
 google-generativeai==0.8.3
 psycopg2-binary==2.9.9
