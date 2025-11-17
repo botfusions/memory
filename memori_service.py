@@ -4,7 +4,7 @@ Core Memori business logic
 """
 
 from memori import Memori
-from openai import OpenAI
+import openai
 import os
 from typing import Optional, List, Dict, Any
 import logging
@@ -47,7 +47,6 @@ class MemoriService:
 
         if self.openai_client is None:
             # OpenAI client without deprecated parameters
-            import openai
             self.openai_client = openai.OpenAI(
                 api_key=self.openai_api_key,
                 timeout=30.0,
