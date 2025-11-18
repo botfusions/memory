@@ -68,12 +68,6 @@ class MemoriService:
         Returns:
             Dict with response and metadata
         """
-        # User-specific namespace
-        if user_id:
-            original_namespace = self.namespace
-            self.namespace = f"{original_namespace}_user_{user_id}"
-            self.memori = None  # Force re-initialization
-
         self._ensure_memori()
 
         # Build messages
@@ -111,12 +105,6 @@ class MemoriService:
                 "error": str(e),
                 "namespace": self.namespace
             }
-
-        finally:
-            # Restore original namespace
-            if user_id:
-                self.namespace = original_namespace
-                self.memori = None
 
     def get_memory_stats(self) -> Dict[str, Any]:
         """Get memory statistics"""
